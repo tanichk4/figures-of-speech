@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figures of Speech ✿</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #fdf6f0;
+    --card: #fff;
+    --pink: #f4a7b9;
+    --pink-light: #fce4ec;
+    --pink-deep: #e88fa5;
+    --lavender: #c9b8e8;
+    --lavender-light: #ede8f8;
+    --mint: #a8d8b9;
+    --mint-light: #e6f5ec;
+    --peach: #ffcba4;
+    --peach-light: #fff0e4;
+    --sky: #a8d4f5;
+    --sky-light: #e4f2ff;
+    --yellow: #fde68a;
+    --yellow-light: #fffde4;
+    --lilac: #d4b8e0;
+    --lilac-light: #f5eeff;
+    --text: #4a3f5c;
+    --text-soft: #8b7fa8;
+    --shadow: rgba(180,160,220,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(244,167,185,0.12) 0%, transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(201,184,232,0.12) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(168,212,245,0.08) 0%, transparent 60%);
+  }
+
+  header {
+    text-align: center;
+    padding: 3rem 1rem 1.5rem;
+    position: relative;
+  }
+
+  header h1 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  header h1 span {
+    background: linear-gradient(135deg, var(--pink-deep), var(--lavender));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  header p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+
+  .deco-row {
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+    margin-top: 0.5rem;
+    opacity: 0.6;
+  }
+
+  /* Search + Filter */
+  .controls {
+    max-width: 680px;
+    margin: 0 auto 1.5rem;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .search-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 0.65rem 1rem 0.65rem 2.5rem;
+    border: 2px solid var(--lavender);
+    border-radius: 50px;
+    background: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-wrap input:focus { border-color: var(--pink-deep); }
+
+  .search-icon {
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+  }
+
+  .progress-bar-wrap {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .progress-label {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: var(--lavender-light);
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink), var(--lavender));
+    border-radius: 50px;
+    transition: width 0.4s ease;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 1rem 4rem;
+  }
+
+  /* Card */
+  .card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 1.4rem 1.4rem 1.2rem;
+    box-shadow: 0 4px 20px var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    border: 2px solid transparent;
+    animation: fadeIn 0.4s ease both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px var(--shadow);
+  }
+
+  .card.learned {
+    border-color: var(--mint);
+  }
+
+  .card.learned::after {
+    content: '✓';
+    position: absolute;
+    top: 0.7rem;
+    right: 0.9rem;
+    background: var(--mint);
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 900;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .card-emoji {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+  }
+
+  .card-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+  }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15rem 0.55rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.15rem;
+  }
+
+  .card-def {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-soft);
+    font-weight: 500;
+  }
+
+  /* Expanded panel */
+  .card-body {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1.5px dashed rgba(180,160,220,0.3);
+    animation: slideDown 0.25s ease;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card.open .card-body { display: block; }
+
+  .card-body .example-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-soft);
+    margin-bottom: 0.35rem;
+  }
+
+  .example-bubble {
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.88rem;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+  }
+
+  .mnemonic-box {
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .mnemonic-box .mnemo-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+  }
+
+  .tip-box {
+    margin-top: 0.6rem;
+    border-radius: 12px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .btn-learn {
+    margin-top: 0.85rem;
+    width: 100%;
+    padding: 0.55rem;
+    border-radius: 50px;
+    border: 2px solid;
+    background: transparent;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  /* Quiz section */
+  .quiz-section {
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+  }
+
+  .quiz-toggle {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--pink), var(--lavender));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(244,167,185,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .quiz-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(244,167,185,0.45);
+  }
+
+  .quiz-box {
+    display: none;
+    margin-top: 1rem;
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 24px var(--shadow);
+    animation: fadeIn 0.3s ease;
+  }
+
+  .quiz-box.open { display: block; }
+
+  .quiz-question {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .quiz-sentence {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    margin-bottom: 1rem;
+    padding: 0.6rem 0.9rem;
+    background: var(--lavender-light);
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .quiz-opt {
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    border: 2px solid var(--lavender);
+    background: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.18s;
+    color: var(--text);
+  }
+
+  .quiz-opt:hover { background: var(--lavender-light); border-color: var(--lavender); }
+  .quiz-opt.correct { background: var(--mint-light); border-color: var(--mint); color: #2d7a4e; }
+  .quiz-opt.wrong { background: var(--pink-light); border-color: var(--pink-deep); color: #c0395a; }
+
+  .quiz-feedback {
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 0.5rem 0.9rem;
+    border-radius: 10px;
+    display: none;
+  }
+
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.good { background: var(--mint-light); color: #2d7a4e; }
+  .quiz-feedback.bad { background: var(--pink-light); color: #c0395a; }
+
+  .quiz-next {
+    margin-top: 0.85rem;
+    padding: 0.55rem 1.5rem;
+    border-radius: 50px;
+    border: 2px solid var(--lavender);
+    background: var(--lavender-light);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.18s;
+    display: none;
+  }
+
+  .quiz-next.show { display: inline-block; }
+  .quiz-next:hover { background: var(--lavender); color: white; }
+
+  .quiz-score {
+    text-align: right;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-soft);
+    margin-bottom: 0.75rem;
+  }
+
+  /* Category colors */
+  .c-pink .card-title { color: var(--pink-deep); }
+  .c-pink .card-tag { background: var(--pink-light); color: var(--pink-deep); }
+  .c-pink .example-bubble { background: var(--pink-light); color: #b0415e; }
+  .c-pink .mnemonic-box { background: var(--peach-light); color: #8b5e3c; }
+  .c-pink .tip-box { background: var(--pink-light); color: #9c3f5a; }
+  .c-pink .btn-learn { border-color: var(--pink-deep); color: var(--pink-deep); }
+  .c-pink .btn-learn:hover, .c-pink.learned .btn-learn { background: var(--pink-deep); color: white; }
+
+  .c-lavender .card-title { color: #8b72cc; }
+  .c-lavender .card-tag { background: var(--lavender-light); color: #8b72cc; }
+  .c-lavender .example-bubble { background: var(--lavender-light); color: #6b52a8; }
+  .c-lavender .mnemonic-box { background: #f0eaff; color: #5c4490; }
+  .c-lavender .tip-box { background: var(--lavender-light); color: #6b52a8; }
+  .c-lavender .btn-learn { border-color: #8b72cc; color: #8b72cc; }
+  .c-lavender .btn-learn:hover { background: #8b72cc; color: white; }
+
+  .c-mint .card-title { color: #3d9e6a; }
+  .c-mint .card-tag { background: var(--mint-light); color: #3d9e6a; }
+  .c-mint .example-bubble { background: var(--mint-light); color: #2d7a52; }
+  .c-mint .mnemonic-box { background: #e0f8ec; color: #266048; }
+  .c-mint .tip-box { background: var(--mint-light); color: #2d7a52; }
+  .c-mint .btn-learn { border-color: #3d9e6a; color: #3d9e6a; }
+  .c-mint .btn-learn:hover { background: #3d9e6a; color: white; }
+
+  .c-peach .card-title { color: #d4815a; }
+  .c-peach .card-tag { background: var(--peach-light); color: #d4815a; }
+  .c-peach .example-bubble { background: var(--peach-light); color: #b06040; }
+  .c-peach .mnemonic-box { background: #fff4e0; color: #8b5030; }
+  .c-peach .tip-box { background: var(--peach-light); color: #b06040; }
+  .c-peach .btn-learn { border-color: #d4815a; color: #d4815a; }
+  .c-peach .btn-learn:hover { background: #d4815a; color: white; }
+
+  .c-sky .card-title { color: #4a8fc0; }
+  .c-sky .card-tag { background: var(--sky-light); color: #4a8fc0; }
+  .c-sky .example-bubble { background: var(--sky-light); color: #2d6e99; }
+  .c-sky .mnemonic-box { background: #ddf0ff; color: #1a5070; }
+  .c-sky .tip-box { background: var(--sky-light); color: #2d6e99; }
+  .c-sky .btn-learn { border-color: #4a8fc0; color: #4a8fc0; }
+  .c-sky .btn-learn:hover { background: #4a8fc0; color: white; }
+
+  .c-yellow .card-title { color: #b08a20; }
+  .c-yellow .card-tag { background: var(--yellow-light); color: #b08a20; }
+  .c-yellow .example-bubble { background: var(--yellow-light); color: #8a6810; }
+  .c-yellow .mnemonic-box { background: #fffadc; color: #6a5010; }
+  .c-yellow .tip-box { background: var(--yellow-light); color: #8a6810; }
+  .c-yellow .btn-learn { border-color: #b08a20; color: #b08a20; }
+  .c-yellow .btn-learn:hover { background: #b08a20; color: white; }
+
+  .c-lilac .card-title { color: #9470b8; }
+  .c-lilac .card-tag { background: var(--lilac-light); color: #9470b8; }
+  .c-lilac .example-bubble { background: var(--lilac-light); color: #7050a0; }
+  .c-lilac .mnemonic-box { background: #f2e8ff; color: #603890; }
+  .c-lilac .tip-box { background: var(--lilac-light); color: #7050a0; }
+  .c-lilac .btn-learn { border-color: #9470b8; color: #9470b8; }
+  .c-lilac .btn-learn:hover { background: #9470b8; color: white; }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="deco-row">🐱 ✿ 🌸 ✿ 🐱</div>
+  <h1>Figures of <span>Speech</span></h1>
+  <p>натисни на картку щоб розкрити · позначай вивчені ✓</p>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="шукай фігуру...">
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-label">
+      <span>вивчено</span>
+      <span id="progressText">0 / 10</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<div class="quiz-section">
+  <button class="quiz-toggle" onclick="toggleQuiz()">🎯 Перевір себе — міні-квіз</button>
+  <div class="quiz-box" id="quizBox">
+    <div class="quiz-score" id="quizScore">Правильних: 0 / 0</div>
+    <div class="quiz-question" id="quizQ"></div>
+    <div class="quiz-sentence" id="quizSentence"></div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <button class="quiz-next" id="quizNext" onclick="nextQuestion()">Наступне →</button>
+  </div>
+</div>
+
+<div class="grid" id="cardsGrid"></div>
+
+<footer>🐾 figures of speech · english exam prep · good luck! 🌸</footer>
+
+<script>
+const figures = [
+  {
+    name: "METAPHOR",
+    emoji: "🌊",
+    color: "c-pink",
+    tag: "Word Figure",
+    def: "Пряме перенесення назви з одного об'єкта на інший на основі схожості. Без «як» — це вже метафора!",
+    example: '"As for the gravy, it was a poem."',
+    exampleNote: "Підлива = вірш? Схожість: обидва — шедеври краси й смаку.",
+    mnemonic: "💡 META = «між» → метафора будує МІСТ між двома речами без слова «як».",
+    tip: "🐱 Відрізняй від simile: metaphor каже «є», simile каже «як»."
+  },
+  {
+    name: "METONYMY",
+    emoji: "☕",
+    color: "c-lavender",
+    tag: "Word Figure",
+    def: "Заміна назви за суміжністю — не схожість, а зв'язок (контейнер → вміст, автор → твір).",
+    example: '"The kettle boils."',
+    exampleNote: "Чайник кипить? Ні — кипить вода в чайнику. Але ми говоримо «чайник».",
+    mnemonic: "💡 METO + NYM = нова назва через КОНТАКТ/зв'язок. Чайник ↔ вода.",
+    tip: "🐾 Інші приклади: «читати Шекспіра» (=його твори), «Кремль сказав» (=уряд)."
+  },
+  {
+    name: "EPITHET",
+    emoji: "✨",
+    color: "c-mint",
+    tag: "Word Figure",
+    def: "Емоційно забарвлена характеристика, що виражає особисте ставлення автора до об'єкта.",
+    example: '"the most fairy-like little nook"',
+    exampleNote: "«Казковий» — не просто факт, а емоційна оцінка автора.",
+    mnemonic: "💡 EPITHET = EPI (зверху) + THET (поставлений) → слово «нанесене» поверх іменника як оцінка.",
+    tip: "🌸 Епітет ≠ просте прикметник. Він розкриває ПОЧУТТЯ автора, не факт."
+  },
+  {
+    name: "SIMILE",
+    emoji: "🌙",
+    color: "c-sky",
+    tag: "Word Figure",
+    def: "Пряме порівняння двох різних речей через «as», «like», «as if» — уявне зіставлення.",
+    example: '"...a pink cloud like a watchful cherub floating above their heads."',
+    exampleNote: "Хмара порівнюється з янголом — через «like». Образне, уявне зіставлення.",
+    mnemonic: "💡 SIMILE → SIMILAR → подібний. Є слово «like» чи «as»? Це simile!",
+    tip: "🐱 Simile = comparison with 'like/as'. Metaphor = без порівняльних слів."
+  },
+  {
+    name: "HYPERBOLE",
+    emoji: "🎆",
+    color: "c-peach",
+    tag: "Emphasis",
+    def: "Навмисне перебільшення для посилення ефекту. Не обман — художній прийом!",
+    example: '"a thousand thanks"',
+    exampleNote: "Ніхто не дякує тисячу разів — але ефект сили почуттів досягнутий.",
+    mnemonic: "💡 HYPER = понад міру. HYPER-активний, HYPER-bole — все перебільшено!",
+    tip: "🌸 Щоденні гіперболи: «я вмираю від голоду», «чекала вічність»."
+  },
+  {
+    name: "ZEUGMA",
+    emoji: "🔗",
+    color: "c-yellow",
+    tag: "Syntax Figure",
+    def: "Одне слово пов'язане з двома іншими: одне вживання буквальне, друге — метафоричне.",
+    example: '"And the boys took their places and books."',
+    exampleNote: "«Took» → places (буквально) + books (метафорично: «взяли в руки»).",
+    mnemonic: "💡 ZEUGMA = грецьке «ярмо» — одне слово тягне два різних вантажі.",
+    tip: "🐾 Класика: 'She lost her purse and her temper' — «загубила» гаманець (факт) і терпіння (метафора)."
+  },
+  {
+    name: "EUPHEMISM",
+    emoji: "🌷",
+    color: "c-lavender",
+    tag: "Word Figure",
+    def: "М'яка або розпливчаста заміна грубого чи неприємного слова більш прийнятним.",
+    example: '"He is gone." (= dead)',
+    exampleNote: "«Пішов» замість «помер» — м'якше, ввічливіше, менш болісно.",
+    mnemonic: "💡 EU = добре, PHEME = мова → «гарна мова» замість різкої.",
+    tip: "🌸 Інші: «passed away», «let go» (звільнили), «collateral damage»."
+  },
+  {
+    name: "ALLUSION",
+    emoji: "📚",
+    color: "c-lilac",
+    tag: "Reference Figure",
+    def: "Непряме посилання на відомий факт — історичний, літературний, біблійний — без прямої назви.",
+    example: '"He really had somewhat the look of a young Silenus."',
+    exampleNote: "Силен — фігура грецької міфології. Читач «впізнає» — це і є алюзія.",
+    mnemonic: "💡 ALLUSION → allude → «натякати». Не пояснюєш — натякаєш на відоме.",
+    tip: "🐱 Allude ≠ Illusion! Allusion = натяк на реальний факт/персонажа."
+  },
+  {
+    name: "IRONY",
+    emoji: "😏",
+    color: "c-pink",
+    tag: "Meaning Figure",
+    def: "Вживання слова в значенні, протилежному буквальному. Кажемо одне — маємо на увазі інше.",
+    example: '"How clever!" — when someone does something foolish.',
+    exampleNote: "«Розумний!» — а людина вчинила дурницю. Протилежність — і є суть.",
+    mnemonic: "💡 IRON = залізо → тверда протилежність між словом і змістом.",
+    tip: "🌸 Тон голосу в реальному житті видає іронію. У тексті — контекст."
+  },
+  {
+    name: "PARALLEL CONSTRUCTION",
+    emoji: "🎋",
+    color: "c-mint",
+    tag: "Syntax Figure",
+    def: "Повторення однакової синтаксичної структури в кількох реченнях або частинах речення поспіль.",
+    example: '"...sees the railway replaced... sees new roadways spreading... sees a new industrialism arising..."',
+    exampleNote: "Три рази «sees» + однакова структура — ритм і сила.",
+    mnemonic: "💡 PARALLEL = паралельні лінії — однакова форма, різний зміст.",
+    tip: "🐾 Надає тексту ритму, урочистості та переконливості."
+  },
+  {
+    name: "OXYMORON",
+    emoji: "⚡",
+    color: "c-peach",
+    tag: "Contradiction",
+    def: "Поєднання двох слів із протилежним значенням в одній фразі, що створює парадоксальний ефект.",
+    example: '"sweet sorrow", "horribly beautiful", "low skyscraper"',
+    exampleNote: "«Солодкий смуток» — протилежності, але разом створюють новий сенс.",
+    mnemonic: "💡 OXY = гострий + MORON = тупий → саме слово є оксимороном!",
+    tip: "🌸 Різниця від irony: оксиморон = сталий вираз, іронія = ситуативна."
+  }
+];
+
+const quizData = [
+  { sentence: '"As for the gravy, it was a poem."', answer: "METAPHOR", options: ["METAPHOR","SIMILE","EPITHET","METONYMY"], hint: "Підлива = вірш. Пряме прирівнювання без «як»." },
+  { sentence: '"The kettle boils."', answer: "METONYMY", options: ["METONYMY","METAPHOR","HYPERBOLE","IRONY"], hint: "Чайник → вода. Зв'язок, не схожість." },
+  { sentence: '"a thousand thanks"', answer: "HYPERBOLE", options: ["HYPERBOLE","ALLUSION","ZEUGMA","OXYMORON"], hint: "Тисяча подяк — буквально? Ні! Перебільшення." },
+  { sentence: '"sweet sorrow"', answer: "OXYMORON", options: ["OXYMORON","IRONY","EPITHET","PARALLEL CONSTRUCTION"], hint: "Солодкий + смуток = протилежності разом." },
+  { sentence: '"He is gone." (meaning dead)', answer: "EUPHEMISM", options: ["EUPHEMISM","ALLUSION","METAPHOR","IRONY"], hint: "М'яка заміна неприємного слова." },
+  { sentence: '"How clever!" said sarcastically when someone does something stupid.', answer: "IRONY", options: ["IRONY","HYPERBOLE","EPITHET","SIMILE"], hint: "Слово = протилежне до сенсу." },
+  { sentence: '"...like a watchful cherub floating above their heads."', answer: "SIMILE", options: ["SIMILE","METAPHOR","ALLUSION","ZEUGMA"], hint: "Є слово «like» — порівняння!" },
+  { sentence: '"the most fairy-like little nook"', answer: "EPITHET", options: ["EPITHET","SIMILE","OXYMORON","METONYMY"], hint: "Емоційна характеристика, ставлення автора." },
+  { sentence: '"He had somewhat the look of a young Silenus."', answer: "ALLUSION", options: ["ALLUSION","METAPHOR","IRONY","ZEUGMA"], hint: "Сілен — грецький персонаж. Натяк на відоме." },
+  { sentence: '"...sees the decaying railway replaced... sees new roadways... sees a new industrialism arising..."', answer: "PARALLEL CONSTRUCTION", options: ["PARALLEL CONSTRUCTION","ZEUGMA","HYPERBOLE","EPITHET"], hint: "«Sees» повторюється + однакова структура." }
+];
+
+let learned = new Set();
+let quizOpen = false;
+let quizIdx = 0;
+let shuffledQuiz = [];
+let quizCorrect = 0;
+let quizTotal = 0;
+let quizAnswered = false;
+
+function render(filter = "") {
+  const grid = document.getElementById("cardsGrid");
+  grid.innerHTML = "";
+  const fl = filter.toLowerCase();
+  figures.forEach((f, i) => {
+    if (fl && !f.name.toLowerCase().includes(fl) && !f.def.toLowerCase().includes(fl)) return;
+    const card = document.createElement("div");
+    card.className = `card ${f.color} ${learned.has(f.name) ? "learned" : ""}`;
+    card.id = `card-${i}`;
+    card.style.animationDelay = `${i * 0.04}s`;
+    card.innerHTML = `
+      <div class="card-top" onclick="toggleCard(${i})">
+        <span class="card-emoji">${f.emoji}</span>
+        <div>
+          <div class="card-title">${f.name}</div>
+          <span class="card-tag">${f.tag}</span>
+        </div>
+      </div>
+      <div class="card-def" onclick="toggleCard(${i})">${f.def}</div>
+      <div class="card-body">
+        <div class="example-label">Приклад</div>
+        <div class="example-bubble">${f.example}</div>
+        <div class="example-label">Чому це так?</div>
+        <div class="tip-box">${f.exampleNote}</div>
+        <div class="mnemonic-box">
+          <div class="mnemo-label">🧠 Як запам'ятати</div>
+          ${f.mnemonic}
+        </div>
+        <button class="btn-learn" onclick="toggleLearned('${f.name}', event)">
+          ${learned.has(f.name) ? "✓ Вивчено!" : "Позначити як вивчене"}
+        </button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  updateProgress();
+}
+
+function toggleCard(i) {
+  const card = document.getElementById(`card-${i}`);
+  card.classList.toggle("open");
+}
+
+function toggleLearned(name, e) {
+  e.stopPropagation();
+  if (learned.has(name)) learned.delete(name);
+  else learned.add(name);
+  render(document.getElementById("searchInput").value);
+  const idx = figures.findIndex(f => f.name === name);
+  if (idx !== -1) {
+    setTimeout(() => {
+      const card = document.getElementById(`card-${idx}`);
+      if (card) card.classList.add("open");
+    }, 10);
+  }
+}
+
+function updateProgress() {
+  const total = figures.length;
+  const done = learned.size;
+  document.getElementById("progressText").textContent = `${done} / ${total}`;
+  document.getElementById("progressFill").style.width = `${(done/total)*100}%`;
+}
+
+document.getElementById("searchInput").addEventListener("input", e => render(e.target.value));
+
+// Quiz
+function toggleQuiz() {
+  quizOpen = !quizOpen;
+  document.getElementById("quizBox").classList.toggle("open", quizOpen);
+  if (quizOpen && shuffledQuiz.length === 0) {
+    shuffledQuiz = [...quizData].sort(() => Math.random() - 0.5);
+    quizIdx = 0; quizCorrect = 0; quizTotal = 0;
+    showQuestion();
+  }
+}
+
+function showQuestion() {
+  if (quizIdx >= shuffledQuiz.length) {
+    quizIdx = 0;
+    shuffledQuiz = [...quizData].sort(() => Math.random() - 0.5);
+  }
+  const q = shuffledQuiz[quizIdx];
+  quizAnswered = false;
+  document.getElementById("quizQ").textContent = "Яка фігура мови?";
+  document.getElementById("quizSentence").textContent = q.sentence;
+  document.getElementById("quizFeedback").className = "quiz-feedback";
+  document.getElementById("quizNext").className = "quiz-next";
+
+  const opts = document.getElementById("quizOptions");
+  opts.innerHTML = "";
+  const shuffled = [...q.options].sort(() => Math.random() - 0.5);
+  shuffled.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.className = "quiz-opt";
+    btn.textContent = opt;
+    btn.onclick = () => answer(opt, q);
+    opts.appendChild(btn);
+  });
+  updateScore();
+}
+
+function answer(chosen, q) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  quizTotal++;
+  const isRight = chosen === q.answer;
+  if (isRight) quizCorrect++;
+
+  document.querySelectorAll(".quiz-opt").forEach(btn => {
+    if (btn.textContent === q.answer) btn.classList.add("correct");
+    else if (btn.textContent === chosen && !isRight) btn.classList.add("wrong");
+    btn.onclick = null;
+  });
+
+  const fb = document.getElementById("quizFeedback");
+  fb.className = `quiz-feedback show ${isRight ? "good" : "bad"}`;
+  fb.textContent = isRight ? `✓ Правильно! ${q.hint}` : `✗ Ні. Правильно: ${q.answer}. ${q.hint}`;
+
+  document.getElementById("quizNext").className = "quiz-next show";
+  updateScore();
+}
+
+function nextQuestion() {
+  quizIdx++;
+  showQuestion();
+}
+
+function updateScore() {
+  document.getElementById("quizScore").textContent = `Правильних: ${quizCorrect} / ${quizTotal}`;
+}
+
+render();
+</script>
+</body>
+</html>
